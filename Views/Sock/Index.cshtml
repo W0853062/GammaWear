@@ -1,0 +1,28 @@
+﻿@model IEnumerable<GammaWear.Models.Sock>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<div class="row">
+    @foreach (var sock in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <a href="@Url.Action("Details", "Sock", new { id = sock.Id })">
+                    <img class="card-img-top" src="~/images/@sock.ImageFile" alt="@sock.Description">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">@sock.Description</h5>
+                    <p class="card-text">@string.Join(" ", @sock.Description.Split(' ').Take(30)) ...</p>
+                    <p class="card-text">Price: @sock.Price.ToString("C")</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a href="@Url.Action("Edit", "Sock", new { id = sock.Id })" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        }
+                        <small class="text-muted">In Stock: @sock.Quantity</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

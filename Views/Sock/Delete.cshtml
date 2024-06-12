@@ -1,0 +1,44 @@
+﻿@model GammaWear.ViewModels.SockDetailsViewModel
+@using GammaWear.Helpers
+
+@{
+    ViewData["Title"] = "Delete Sock";
+}
+
+<h1>Delete Sock</h1>
+
+<h3>Are you sure you want to delete this sock?</h3>
+<div>
+    <h4>Sock</h4>
+    <hr />
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-fluid" src="~/images/@Model.ImageFile" alt="@Model.Description">
+            </div>
+
+            <div class="col-md-6">
+
+                <p><strong>Material:</strong>  @Model.MaterialName</p>
+                <p><strong>Size:</strong> @EnumHelper.GetDisplayName(Model.SockSize)</p>
+                <p><strong>Style:</strong> @Model.SockStyleName</p>
+                <p><strong>Brand:</strong> @Model.BrandName</p>
+                <p><strong>Outdoor Sport:</strong> @Model.OutdoorSportName</p>
+                <p><strong>Consumer Group:</strong> Model.ConsumerGroup</p>
+                <p><strong>Season:</strong> @Model.SeasonName</p>
+                <p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+                <p><strong>In Stock:</strong> @Model.Quantity</p>
+                <br />
+                <p><strong>Description:</strong>@Model.Description</p>
+            </div>
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+
+                <a asp-controller="Home" asp-action="Index">Back to Home</a>
+            </form>
+        </div>
+    </div>
+
+
+</div>

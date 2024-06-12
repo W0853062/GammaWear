@@ -1,0 +1,46 @@
+﻿@model GammaWear.ViewModels.SockDetailsViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@using GammaWear.Helpers
+
+<h2>Detail</h2>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="img-fluid" src="~/images/@Model.ImageFile" alt="@Model.Description">
+        </div>
+        <div class="col-md-6">
+           
+            <p><strong>Material:</strong>  @Model.MaterialName</p>
+            <p><strong>Size:</strong> @EnumHelper.GetDisplayName(Model.SockSize)</p>
+            <p><strong>Style:</strong> @Model.SockStyleName</p>
+            <p><strong>Brand:</strong> @Model.BrandName</p>
+            <p><strong>Outdoor Sport:</strong> @Model.OutdoorSportName</p>
+            <p><strong>Consumer Group:</strong> Model.ConsumerGroup</p>
+            <p><strong>Season:</strong> @Model.SeasonName</p>
+            <p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+            <p><strong>In Stock:</strong> @Model.Quantity</p>
+            <br />
+            <p><strong>Description:</strong>@Model.Description</p>
+        </div>
+        <div>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div>
+                    <a asp-action="Create">Create</a> |
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                </div>
+                <div>
+                    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+                </div>
+            }
+            <a asp-controller="Home" asp-action="Index">Back to Home</a>
+            
+        </div>
+
+    </div>
+</div>
