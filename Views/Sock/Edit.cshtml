@@ -10,7 +10,10 @@
 <h4>Sock</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
+        <img class="img-fluid" src="~/images/@Model.ImageFile" alt="@Model.Description">
+    </div>
+    <div class="col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -80,18 +83,22 @@
                 <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
+        <br/>
+        <div>
+            <a asp-controller="Sock" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Back to Detail</a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Home</a>
+            <br />
+
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-controller="Sock" asp-action="Details" asp-route-id="@Model.Id">Back to Detail</a>
-    <a asp-controller="Home" asp-action="Index">Back to Home</a>
 
-</div>
 
 @section Scripts {
     <script>
