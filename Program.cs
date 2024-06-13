@@ -15,7 +15,7 @@ builder.Services.AddDbContext<GammaWearContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("GammaWearContext")
     ?? throw new InvalidOperationException("Connection string 'GammaWearContext' not found.")));
 
-// Add services to the container.
+// Add services to the container..
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 

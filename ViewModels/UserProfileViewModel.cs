@@ -10,7 +10,7 @@ namespace GammaWear.ViewModels
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        // Add other profile properties as needed
+        // Add other profile properties as necessary
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
     }

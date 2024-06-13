@@ -6,6 +6,7 @@ namespace GammaWear.ViewModels
     public class SockDetailsViewModel
     {
         public int Id { get; set; }
+
         public string MaterialName { get; set; }
         public string SockStyleName { get; set; }
         public string OutdoorSportName { get; set; }
@@ -17,6 +18,8 @@ namespace GammaWear.ViewModels
         public int? Quantity { get; set; }
         public string ImageFile { get; set; }
         public string Description { get; set; }
+        public string Ratings { get; set; }
+        public string Status { get; set; }
     }
 
 }
