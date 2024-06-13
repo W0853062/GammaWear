@@ -8,14 +8,14 @@ Review the 'Product' assignment and investigate this real world object for speci
 
 0325- Shared what we understood from what we read individually 
 
-0332- Brainstorming on ¡°COMPANY NAME¡±. First task
+0332- Brainstorming on Â¡Â°COMPANY NAMEÂ¡Â±. First task
 
 0338- Came about with the name Gamma Wears, we concluded with that and moving forward. We need a scope, 
 
 Color
 Material
-Sex available¡ª males/ Female
-Categories¡ª kids/adult 
+Sex availableÂ¡Âª males/ Female
+CategoriesÂ¡Âª kids/adult 
 Size- large/small
 Texture- thick/light 
 
@@ -34,4 +34,8 @@ Discuss the requirements for the Gamma Wear website. How should the UI look like
 4810 - Create the project and set the data base. Register and Login works.
 
 2010 - Home Page, Create, Edit, Delete works.
+
+
+
+2024-06-11 0210 EDT
 
