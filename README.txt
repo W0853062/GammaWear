@@ -39,3 +39,12 @@ Discuss the requirements for the Gamma Wear website. How should the UI look like
 
 2024-06-11 0210 EDT
 
+2024-06-13 14:00 EDT
+
+14:00: Made the site public on github and tested on all three computers(team members) together.
+14:30: Got the students free plan on Azure and tried to upload the site as a web app
+14:50: Made it work gammaweargammawear.azurewebsites.net except the home page.
+14:50: Site worked fine when tried to login, create user and even on about page but main/home page did not work.
+15:10: Tried to update site using different creds such as my computer but my team mate's github(primary repo) but the same error at the end.
+
+15:25: Dropped the idea of creating it on azure wasn't mandatory but preferred for this assignment(at least for now)
