@@ -47,4 +47,14 @@ Discuss the requirements for the Gamma Wear website. How should the UI look like
 14:50: Site worked fine when tried to login, create user and even on about page but main/home page did not work.
 15:10: Tried to update site using different creds such as my computer but my team mate's github(primary repo) but the same error at the end.
 
-15:25: Dropped the idea of creating it on azure wasn't mandatory but preferred for this assignment(at least for now)
+15:15: Dropped the idea of creating it on azure wasn't mandatory but preferred for this assignment(at least for now)
+
+15:20 edited the edit.cshtml file and add some more socks images to the app.. error loading created another folder git.cshtl with the same content 
+runtime error on all 3 computers, that means the problem seemed to be in the code .. had to delelte and recreate some of the file. such as cshmtl files
+
+15:25 Synced the files and the site worked now on the local host 
+It still didnnt work on other computers, had to update the database and performed the sync again using nutget packet manager
+
+15:28 issues sorted out on all computers.
+
+
