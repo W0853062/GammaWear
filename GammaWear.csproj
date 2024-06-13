@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-GammaWear-632bce88-8d00-497d-a549-08bbedcaaeb7</UserSecretsId>
+    <UserSecretsId>aspnet-GAMMAWEAR-632bce88-8d00-497d-a549-08bbedcaaeb7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
