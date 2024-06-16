@@ -11,6 +11,9 @@ using GammaWear.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace GammaWear.Controllers
 {
@@ -125,6 +128,7 @@ namespace GammaWear.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            _logger.LogInformation("--- async Task<IActionResult> Edit: enter");
             if (id == null)
             {
                 return NotFound();
@@ -148,9 +152,11 @@ namespace GammaWear.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SeasonId,BrandId,Price,Quantity,ImageFile,Description")] Sock sock)
-         {
-            _logger.LogInformation("--- Task<IActionResult> Edit: enter");
+        public async Task<IActionResult> Edit(int id,
+            [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SockSize,ConsumerGroup,SeasonId,BrandId,Price,Quantity,Description,ImageFile")] Sock sock,
+            IFormFile imageFile = null)
+        {
+            _logger.LogInformation("--- Edit with Bind: enter");
             _logger.LogInformation($"--Expect ID:{id}, Actual ID: {sock.Id}");
             if (id != sock.Id)
             {
@@ -179,6 +185,24 @@ namespace GammaWear.Controllers
             {
                 try
                 {
+                    _logger.LogInformation($"--imageFile is: {imageFile}");
+                    if (imageFile != null && imageFile.Length > 0)
+                    {
+                        var fileName = Path.GetFileName(imageFile.FileName);
+                        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", fileName);
+
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await imageFile.CopyToAsync(fileStream);
+                        }
+                        sock.ImageFile = fileName;
+                    }
+                    else
+                    {
+                        // Keep the original image if no new image is provided
+                        var originalSock = await _context.Socks.AsNoTracking().FirstOrDefaultAsync(s => s.Id == sock.Id);
+                        sock.ImageFile = originalSock?.ImageFile ?? sock.ImageFile;
+                    }
                     _context.Update(sock);
                     await _context.SaveChangesAsync();
                 }
@@ -267,7 +291,7 @@ namespace GammaWear.Controllers
             return _context.Socks.Any(e => e.Id == id);
 
         }
-        
+
         private void PopulateDropDowns(Sock sock = null)
         {
             ViewBag.Materials = new SelectList(_context.Materials, "Id", "Name", sock?.MaterialId);
@@ -279,5 +303,8 @@ namespace GammaWear.Controllers
 
 
 
+
+
     }
+
 }

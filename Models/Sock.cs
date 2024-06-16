@@ -27,9 +27,14 @@ namespace GammaWear.Models
     }
     public enum ConsumerGroup
     {
+
+        [Display(Name = "Male")]
         Male,
+        [Display(Name = "Female")]
         Female,
+        [Display(Name = "Kids")]
         Kids,
+        [Display(Name = "Unisex")]
         Unisex
     }
 
@@ -67,7 +72,6 @@ namespace GammaWear.Models
         [Range(0, int.MaxValue, ErrorMessage = "Quantity must be a non-negative number.")]
         [Display(Name = "In Stock")] 
         public int? Quantity { get; set; }
-
         public string ImageFile { get; set; } = "hs1gayk9.png";
         public string Description { get; set; } = "";
 
