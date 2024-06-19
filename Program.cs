@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using GammaWear.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddRoles<IdentityRole>()
+    .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddRazorPages();
@@ -68,8 +69,15 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     //SeedData.Initialize(services);
+    
+
     try
     {
+       // var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+        //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+        // Call your SeedUsers method here
+        //SeedData.SeedUsers(userManager, roleManager).Wait();
+
         var context = services.GetRequiredService<ApplicationDbContext>();
         context.Database.Migrate();
 

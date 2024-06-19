@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using GammaWear.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GammaWear.Data
@@ -9,5 +10,7 @@ namespace GammaWear.Data
             : base(options)
         {
         }
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+
     }
 }

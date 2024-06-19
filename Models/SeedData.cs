@@ -21,14 +21,24 @@ public static class SeedData
             context.SaveChanges();
         }
 
-
-        // Seeding users and roles
-        using (var scope = serviceProvider.CreateScope())
+        using (var context = new ApplicationDbContext(
+            serviceProvider.GetRequiredService<
+                DbContextOptions<ApplicationDbContext>>()))
         {
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            context.Database.Migrate();
+
+            // Seeding users and roles
+            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             await SeedUsers(userManager, roleManager);
         }
+        // Seeding users and roles
+        //using (var scope = serviceProvider.CreateScope())
+       // {
+        //    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+        //    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
+        //    await SeedUsers(userManager, roleManager);
+        //}
     }
 
     private static async Task InitMaterial(GammaWearContext context)
@@ -337,15 +347,18 @@ public static class SeedData
         );
         await context.SaveChangesAsync();
     }
-    private static async Task SeedUsers(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+    private static async Task SeedUsers(UserManager<IdentityUser> userManager, RoleManager<ApplicationRole> roleManager)
     {
         if (!userManager.Users.Any())
         {
             var users = new[]
             {
             new { Email = "admin@admin.com", Password = "Admin@Gamma123", Role = "Admin", PhoneNumber = "1234567890" },
+            new { Email = "editor@editor.com", Password = "Editor@12345", Role = "Editor", PhoneNumber = "2345678901" },
             new { Email = "user@user.com", Password = "User@12345", Role = "User", PhoneNumber = "0987654321" }
+            
         };
+           
 
             foreach (var userInfo in users)
             {
@@ -364,7 +377,7 @@ public static class SeedData
                 {
                     if (!await roleManager.RoleExistsAsync(userInfo.Role))
                     {
-                        await roleManager.CreateAsync(new IdentityRole(userInfo.Role));
+                        await roleManager.CreateAsync(new ApplicationRole(userInfo.Role));
                     }
                     await userManager.AddToRoleAsync(user, userInfo.Role);
                 }
