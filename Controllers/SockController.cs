@@ -31,6 +31,7 @@ namespace GammaWear.Controllers
         }
 
         // GET: Sock
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Socks.ToListAsync());
@@ -73,6 +74,7 @@ namespace GammaWear.Controllers
         }
 
         // GET: Sock/Create
+        [Authorize(Roles = "Editor")]
         public IActionResult Create()
         {
             _logger.LogInformation("--IActionResult Create: enter");
@@ -83,6 +85,7 @@ namespace GammaWear.Controllers
         // POST: Sock/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SeasonId,BrandId,Price,Quantity,ImageFile,Description")] Sock sock, IFormFile imageFile)
@@ -125,7 +128,7 @@ namespace GammaWear.Controllers
             return View(sock);
         }
         // GET: Sock/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int? id)
         {
             _logger.LogInformation("--- async Task<IActionResult> Edit: enter");
@@ -151,7 +154,7 @@ namespace GammaWear.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int id,
             [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SockSize,ConsumerGroup,SeasonId,BrandId,Price,Quantity,Description,ImageFile")] Sock sock,
             IFormFile imageFile = null)
@@ -226,6 +229,7 @@ namespace GammaWear.Controllers
         }
 
         // GET: Sock/Delete/5
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Socks == null)
@@ -267,6 +271,7 @@ namespace GammaWear.Controllers
         // POST: Sock/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             _logger.LogInformation("--- Task<IActionResult> DeleteConfirmed: enter");

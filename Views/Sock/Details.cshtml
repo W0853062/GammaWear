@@ -26,7 +26,7 @@
         </div>
         <div>
 
-            @if (SignInManager.IsSignedIn(User))
+            @if (User.IsInRole("Editor"))
             {
                 <br />
                 <div>
