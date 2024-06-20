@@ -32,13 +32,7 @@ public static class SeedData
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             await SeedUsers(userManager, roleManager);
         }
-        // Seeding users and roles
-        //using (var scope = serviceProvider.CreateScope())
-       // {
-        //    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-        //    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-        //    await SeedUsers(userManager, roleManager);
-        //}
+       
     }
 
     private static async Task InitMaterial(GammaWearContext context)
@@ -164,6 +158,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Wool").Id,
+                Rating = 5,
 
                 SockSize = SockSize.Medium,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
@@ -181,7 +176,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Wool").Id,
-                
+                Rating = 4,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Ski / Snowboard").Id,
@@ -199,7 +194,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Bamboo").Id,
-                
+                Rating = 3,
                 SockSize = SockSize.Small,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
@@ -215,7 +210,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Cotton").Id,
-                
+                Rating = 2,
                 SockSize = SockSize.OneSizeFitsAll,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Athletic Sports").Id,
@@ -232,7 +227,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Coolmax").Id,
-                
+                Rating = 1,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Ankle Socks").Id,
                 
@@ -250,7 +245,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Cashmere").Id,
-               
+                Rating = 5,
                 SockSize = SockSize.Medium,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
                 
@@ -267,7 +262,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Eco Friendly Fibres").Id,
-                
+                Rating = 5,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
                 
@@ -285,7 +280,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Merino Wool").Id,
-                
+                Rating = 5,
                 SockSize = SockSize.Large,
                 
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
@@ -295,9 +290,6 @@ public static class SeedData
 
                 SeasonId = context.Seasons.First(s => s.Name == "Winter Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "HikerPro").Id,
-
-               
-
                 
                 Price = 19m,
                 Quantity = 90,
@@ -307,7 +299,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Cotton").Id,
-               
+                Rating = 5,
                 SockSize = SockSize.Small,
                 
                 SockStyleId = context.SockStyles.First(s => s.Name == "Ankle Socks").Id,
@@ -316,8 +308,6 @@ public static class SeedData
                 ConsumerGroup = ConsumerGroup.Female,
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Runner Gear").Id,
-
-                
                 
                 Price = 11m,
                 Quantity = 140,
@@ -327,7 +317,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Coolmax").Id,
-                
+                Rating = 5,
                 SockSize = SockSize.Medium,
                
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
@@ -343,6 +333,36 @@ public static class SeedData
                 Quantity = 150,
                 ImageFile = "sock10.png",
                 Description = "Coolmax crew socks designed for summer cycling. Keep your feet cool and comfortable."
+            },
+            new Sock
+            {
+                MaterialId = context.Materials.First(m => m.Name == "Wool").Id,
+                SockSize = SockSize.Large,
+                SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
+                OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Ski / Snowboard").Id,
+                ConsumerGroup = ConsumerGroup.Male,
+                SeasonId = context.Seasons.First(s => s.Name == "Winter Socks").Id,
+                BrandId = context.Brands.First(b => b.Name == "Trans Canada Trail").Id,
+                Price = 18m,
+                Quantity = 100,
+                ImageFile = "sock11.png",
+                Description = "High-performance knee-high socks made from Wool. Ideal for skiing and snowboarding in the winter.",
+                Rating = 4 
+            },
+            new Sock
+            {
+                MaterialId = context.Materials.First(m => m.Name == "Wool").Id,
+                SockSize = SockSize.Large,
+                SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
+                OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Ski / Snowboard").Id,
+                ConsumerGroup = ConsumerGroup.Male,
+                SeasonId = context.Seasons.First(s => s.Name == "Winter Socks").Id,
+                BrandId = context.Brands.First(b => b.Name == "Trans Canada Trail").Id,
+                Price = 18m,
+                Quantity = 100,
+                ImageFile = "sock12.png",
+                Description = "High-performance knee-high socks made from Wool. Ideal for skiing and snowboarding in the winter.",
+                Rating = 4 
             }
         );
         await context.SaveChangesAsync();

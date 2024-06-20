@@ -60,3 +60,14 @@ ul {
     margin-top: 60px;
     height: 120px;
 }
+
+.star {
+    font-size: 20px;
+    color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+.star-filled {
+    color: #D9FF00;
+}

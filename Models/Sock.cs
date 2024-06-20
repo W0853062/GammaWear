@@ -41,6 +41,8 @@ namespace GammaWear.Models
     public class Sock
     {
         public int Id { get; set; }
+        [Range(1, 5)]
+        public int Rating { get; set; }
 
         [Required]
         public int MaterialId { get; set; }
@@ -49,16 +51,16 @@ namespace GammaWear.Models
         public int SockStyleId { get; set; }
         //public SockStyle SockStyle { get; set; }
 
-        [Required] 
-        public SockSize SockSize { get; set; } 
+        [Required]
+        public SockSize SockSize { get; set; }
 
         [Required]
         public int OutdoorSportId { get; set; }
         //public OutdoorSport OutdoorSport { get; set; }
-        
+
         public ConsumerGroup ConsumerGroup { get; set; }
 
-        [Required] 
+        [Required]
         public int SeasonId { get; set; }
         //public Season Season { get; set; }
         public int BrandId { get; set; }
@@ -70,7 +72,7 @@ namespace GammaWear.Models
 
         // quantity in stock
         [Range(0, int.MaxValue, ErrorMessage = "Quantity must be a non-negative number.")]
-        [Display(Name = "In Stock")] 
+        [Display(Name = "In Stock")]
         public int? Quantity { get; set; }
         public string ImageFile { get; set; } = "hs1gayk9.png";
         public string Description { get; set; } = "";

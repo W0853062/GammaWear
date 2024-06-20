@@ -88,7 +88,7 @@ namespace GammaWear.Controllers
         [Authorize(Roles = "Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SeasonId,BrandId,Price,Quantity,ImageFile,Description")] Sock sock, IFormFile imageFile)
+        public async Task<IActionResult> Create([Bind("MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SeasonId,BrandId,Price,Rating,Quantity,ImageFile,Description")] Sock sock, IFormFile imageFile)
         {
             _logger.LogInformation("--async Task<IActionResult> Create: enter");
             PopulateDropDowns();
@@ -156,7 +156,7 @@ namespace GammaWear.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int id,
-            [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SockSize,ConsumerGroup,SeasonId,BrandId,Price,Quantity,Description,ImageFile")] Sock sock,
+            [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SockSize,ConsumerGroup,SeasonId,BrandId,Price,Rating,Quantity,Description,ImageFile")] Sock sock,
             IFormFile imageFile = null)
         {
             _logger.LogInformation("--- Edit with Bind: enter");
