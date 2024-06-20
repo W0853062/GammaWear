@@ -58,6 +58,7 @@ namespace GammaWear.Controllers
             var viewModel = new SockDetailsViewModel
             {
                 Id = sock.Id,
+                Rating = sock.Rating,
                 MaterialName = material?.Name,
                 SockStyleName = sockStyle?.Name,
                 OutdoorSportName = outdoorSport?.Name,

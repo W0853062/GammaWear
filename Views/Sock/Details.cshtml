@@ -3,7 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @using GammaWear.Helpers
 
-<h2>Detail</h2>
+<h1>Sock Detail</h1>
 
 <div class="container mt-4">
     <div class="row">
@@ -11,7 +11,24 @@
             <img class="img-fluid" src="~/images/@Model.ImageFile" alt="@Model.Description">
         </div>
         <div class="col-md-6">
-
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text"><strong>Rating:</strong> </p>
+                <small class="text-muted">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        if (i <= @Model.Rating)
+                        {
+                            <span class="star star-filled">&#9733;</span>
+                        }
+                        else
+                        {
+                            <span st class="star">&#9734;</span>
+                        }
+                    }
+                </small>
+            </div>
+           
+            
             <p><strong>Material:</strong>  @Model.MaterialName</p>
             <p><strong>Size:</strong> @EnumHelper.GetDisplayName(Model.SockSize)</p>
             <p><strong>Style:</strong> @Model.SockStyleName</p>
