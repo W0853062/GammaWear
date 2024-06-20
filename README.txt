@@ -58,3 +58,28 @@ It still didnnt work on other computers, had to update the database and performe
 15:28 issues sorted out on all computers.
 
 
+2024-06-20 11:01 EDT
+
+11:02- We tested the application locally on three computers, tested the register and login options(auth) with admin rights and this worked fine. Registered credentials can also login with no issues/error. 
+
+
+11:45- The product list, product images and ratings were also tested on each computer locally. This also worked fine on each of the 3 computers we tested the application on. 
+In conclusion to this, locally our application works fine.
+
+
+12:50- Deployment: we setup the ‘about’ page of our application on Azure and this worked fine. Displayed right! But the product page showed three types of error. i.e
+	Error 500
+	Win32exception
+	SQL exception
+
+
+2:35-   After troubleshooting we believe this a deployment issue as the application works fine locally. NOTE: The issue is limited to the product page only, as the ‘about’ page works fine. We have included the links below to support this, 
+
+Website that worked: 
+https://gammaweargammawear.azurewebsites.net//home/about
+
+Website that did not work:
+https://gammaweargammawear.azurewebsites.net/
+
+
+
