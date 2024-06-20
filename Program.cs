@@ -54,7 +54,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     // add by vicky
-    app.UseDeveloperExceptionPage();
+    //app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
 else
