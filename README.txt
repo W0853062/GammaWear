@@ -78,6 +78,8 @@ In conclusion to this, locally our application works fine.
 Website that worked: 
 https://gammaweargammawear.azurewebsites.net/home/about
 
+The Azure service is stopped to save credits (students free plan) but can enable it if/when requested.
+
 Website that did not work:
 https://gammaweargammawear.azurewebsites.net/
 
