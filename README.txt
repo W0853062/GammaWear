@@ -76,7 +76,7 @@ In conclusion to this, locally our application works fine.
 2:35-   After troubleshooting we believe this a deployment issue as the application works fine locally. NOTE: The issue is limited to the product page only, as the ‘about’ page works fine. We have included the links below to support this, 
 
 Website that worked: 
-https://gammaweargammawear.azurewebsites.net//home/about
+https://gammaweargammawear.azurewebsites.net/home/about
 
 Website that did not work:
 https://gammaweargammawear.azurewebsites.net/
