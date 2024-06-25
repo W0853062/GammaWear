@@ -28,11 +28,11 @@ public static class SeedData
             context.Database.Migrate();
 
             // Seeding users and roles
-            var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             await SeedUsers(userManager, roleManager);
         }
-       
+
     }
 
     private static async Task InitMaterial(GammaWearContext context)
@@ -162,9 +162,9 @@ public static class SeedData
 
                 SockSize = SockSize.Medium,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
-                    
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
-                    
+
                 ConsumerGroup = ConsumerGroup.Female,
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Runner Gear").Id,
@@ -180,12 +180,12 @@ public static class SeedData
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Ski / Snowboard").Id,
-                
+
                 ConsumerGroup = ConsumerGroup.Male,
-               
+
                 SeasonId = context.Seasons.First(s => s.Name == "Winter Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Trans Canada Trail").Id,
-               
+
                 Price = 18m,
                 Quantity = 100,
                 ImageFile = "sock2.png",
@@ -198,7 +198,7 @@ public static class SeedData
                 SockSize = SockSize.Small,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
-                
+
                 ConsumerGroup = ConsumerGroup.Female,
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Runner Gear").Id,
@@ -214,11 +214,11 @@ public static class SeedData
                 SockSize = SockSize.OneSizeFitsAll,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Athletic Sports").Id,
-                
+
                 ConsumerGroup = ConsumerGroup.Male,
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Golf Pro").Id,
-                
+
                 Price = 14m,
                 Quantity = 200,
                 ImageFile = "sock4.png",
@@ -230,13 +230,13 @@ public static class SeedData
                 Rating = 1,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Ankle Socks").Id,
-                
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
                 ConsumerGroup = ConsumerGroup.Female,
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "JB Fields").Id,
 
-                
+
                 Price = 16m,
                 Quantity = 130,
                 ImageFile = "sock5.png",
@@ -248,12 +248,12 @@ public static class SeedData
                 Rating = 5,
                 SockSize = SockSize.Medium,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
-                
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Ski / Snowboard").Id,
                 ConsumerGroup = ConsumerGroup.Female,
                 SeasonId = context.Seasons.First(s => s.Name == "Winter Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Vagden").Id,
-                
+
                 Price = 25m,
                 Quantity = 80,
                 ImageFile = "sock6.png",
@@ -265,13 +265,13 @@ public static class SeedData
                 Rating = 5,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
-                
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Hiking / Camping").Id,
                 ConsumerGroup = ConsumerGroup.Unisex,
                 SeasonId = context.Seasons.First(s => s.Name == "Fall Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Muskoka Dock Socks").Id,
-               
-                
+
+
                 Price = 17m,
                 Quantity = 110,
                 ImageFile = "sock7.png",
@@ -282,15 +282,15 @@ public static class SeedData
                 MaterialId = context.Materials.First(m => m.Name == "Merino Wool").Id,
                 Rating = 5,
                 SockSize = SockSize.Large,
-                
+
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
-                
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Hiking / Camping").Id,
                 ConsumerGroup = ConsumerGroup.Male,
 
                 SeasonId = context.Seasons.First(s => s.Name == "Winter Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "HikerPro").Id,
-                
+
                 Price = 19m,
                 Quantity = 90,
                 ImageFile = "sock8.png",
@@ -301,14 +301,14 @@ public static class SeedData
                 MaterialId = context.Materials.First(m => m.Name == "Cotton").Id,
                 Rating = 5,
                 SockSize = SockSize.Small,
-                
+
                 SockStyleId = context.SockStyles.First(s => s.Name == "Ankle Socks").Id,
-                
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
                 ConsumerGroup = ConsumerGroup.Female,
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "Runner Gear").Id,
-                
+
                 Price = 11m,
                 Quantity = 140,
                 ImageFile = "sock9.png",
@@ -319,16 +319,16 @@ public static class SeedData
                 MaterialId = context.Materials.First(m => m.Name == "Coolmax").Id,
                 Rating = 5,
                 SockSize = SockSize.Medium,
-               
+
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
-               
+
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
                 ConsumerGroup = ConsumerGroup.Male,
 
                 SeasonId = context.Seasons.First(s => s.Name == "Summer Socks").Id,
                 BrandId = context.Brands.First(b => b.Name == "JB Fields").Id,
 
-                
+
                 Price = 16.5m,
                 Quantity = 150,
                 ImageFile = "sock10.png",
@@ -347,7 +347,7 @@ public static class SeedData
                 Quantity = 100,
                 ImageFile = "sock11.png",
                 Description = "High-performance knee-high socks made from Wool. Ideal for skiing and snowboarding in the winter.",
-                Rating = 4 
+                Rating = 4
             },
             new Sock
             {
@@ -362,27 +362,42 @@ public static class SeedData
                 Quantity = 100,
                 ImageFile = "sock12.png",
                 Description = "High-performance knee-high socks made from Wool. Ideal for skiing and snowboarding in the winter.",
-                Rating = 4 
+                Rating = 4
             }
         );
         await context.SaveChangesAsync();
     }
-    private static async Task SeedUsers(UserManager<IdentityUser> userManager, RoleManager<ApplicationRole> roleManager)
-    {
-        if (!userManager.Users.Any())
-        {
-            var users = new[]
-            {
-            new { Email = "admin@admin.com", Password = "Admin@Gamma123", Role = "Admin", PhoneNumber = "1234567890" },
-            new { Email = "editor@editor.com", Password = "Editor@12345", Role = "Editor", PhoneNumber = "2345678901" },
-            new { Email = "user@user.com", Password = "User@12345", Role = "User", PhoneNumber = "0987654321" }
-            
-        };
-           
 
-            foreach (var userInfo in users)
+    // init user
+    // init user
+    // init user
+    private static async Task SeedUsers(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+    {
+        // Ensure roles are created
+        string[] roleNames = { "Admin", "Editor", "User" };
+        foreach (var roleName in roleNames)
+        {
+            if (!await roleManager.RoleExistsAsync(roleName))
             {
-                var user = new IdentityUser
+                await roleManager.CreateAsync(new ApplicationRole(roleName));
+            }
+        }
+
+
+        var users = new[]
+        {
+                new { Email = "admin@admin.com", Password = "Admin@Gamma123", Role = "Admin", PhoneNumber = "1234567890" },
+                new { Email = "editor@editor.com", Password = "Editor@12345", Role = "Editor", PhoneNumber = "2345678901" },
+                new { Email = "user@user.com", Password = "User@12345", Role = "User", PhoneNumber = "0987654321" }
+            };
+
+
+        foreach (var userInfo in users)
+        {
+            if (userManager.Users.All(u => u.Email != userInfo.Email))
+
+            {
+                var user = new ApplicationUser
                 {
                     UserName = userInfo.Email,
                     Email = userInfo.Email,
@@ -395,10 +410,7 @@ public static class SeedData
 
                 if (result.Succeeded)
                 {
-                    if (!await roleManager.RoleExistsAsync(userInfo.Role))
-                    {
-                        await roleManager.CreateAsync(new ApplicationRole(userInfo.Role));
-                    }
+
                     await userManager.AddToRoleAsync(user, userInfo.Role);
                 }
                 else

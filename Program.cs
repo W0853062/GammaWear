@@ -29,7 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -82,15 +82,9 @@ app.MapRazorPages();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    //SeedData.Initialize(services);
-    
 
     try
     {
-       // var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
-        //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
-        // Call your SeedUsers method here
-        //SeedData.SeedUsers(userManager, roleManager).Wait();
 
         var context = services.GetRequiredService<ApplicationDbContext>();
         context.Database.Migrate();

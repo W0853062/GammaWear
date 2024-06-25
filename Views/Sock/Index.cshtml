@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<GammaWear.Models.Sock>
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
+@inject SignInManager<ApplicationUser> SignInManager
 
 <div class="row">
     @foreach (var sock in Model)

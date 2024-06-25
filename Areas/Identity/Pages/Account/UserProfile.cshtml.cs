@@ -5,16 +5,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GammaWear.ViewModels;
+using GammaWear.Models;
 
 namespace GammaWear.Areas.Identity.Pages.Account
 {
     [Authorize]
     public class UserProfileModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserProfileModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public UserProfileModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
