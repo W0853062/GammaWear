@@ -26,6 +26,7 @@ namespace GammaWear.Areas.Identity.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
+        public string ConfirmationLink { get; set; }
         public class InputModel
         {
             [Required]
@@ -76,8 +77,16 @@ namespace GammaWear.Areas.Identity.Pages.Account
                     // Assign the default role "User" to the newly registered user
                     await _userManager.AddToRoleAsync(user, "User");
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect("~/");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var userId = user.Id;
+
+                    ConfirmationLink = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { userId, code },
+                        protocol: Request.Scheme);
+
+                    return Page();
                 }
                 foreach (var error in result.Errors)
                 {
