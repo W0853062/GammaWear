@@ -12,14 +12,15 @@
 }
 
 .maincontainer {
-    margin-bottom:20px;
+    margin-bottom: 250px;
 }
+
 h1, h2 {
-    color: #2EFAD2;
+    color: #6FA5A9;
 }
 
 h1 {
-    border-bottom: 2px solid #2EFAD2;
+    border-bottom: 2px solid #6FA5A9;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
@@ -50,24 +51,143 @@ ul {
     border-radius: 10px;
 }
 
+/*  card */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
 
+.card-text {
+    display: block;
+    height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-img-top {
+    height: auto; 
+    object-fit: cover; 
+}
+
+.row > .col-md-4 {
+    margin-bottom: 20px; 
+}
+.price-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* footer */
 
 .footer {
     text-align: center;
-    padding: 20px;
-    background-color: #2EFAD2A0;
+    padding-top: 250px;
+    background-color: #6FA5A9;
     color: white;
     margin-top: 60px;
-    height: 120px;
+    padding: 0;
 }
 
+.service-iconbox {
+    margin-right: 20px;
+}
+
+.service-textbox .service-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.service-textbox .service-desc {
+    font-size: 22px;
+    color: #666;
+}
+
+
+footer .custom-rounded {
+    border-radius: 50px !important;
+    text-align: center;
+}
+
+footer .column-margin {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+footer .container {
+    max-width: 1140px;
+    margin: 30px auto;
+}
+
+
 .star {
-    font-size: 20px;
+    font-size: 24px;
     color: grey;
     margin: 0;
     padding: 0;
 }
 
 .star-filled {
-    color: #2EFAD2;
+    color: #FFD465;
 }
+
+/* custom button */
+/* Default button style */
+.btn-custom {
+  color: #6FA5A9; /* Text color */
+  border: 2px solid #6FA5A9; /* Border color */
+  background-color: transparent; /* Transparent background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect */
+.btn-custom:hover {
+  background-color: #6FA5A9; /* Background color on hover */
+  color: white; /* Text color on hover */
+}
+
+/* Active button style */
+.btn-custom:active {
+  background-color: #6FA5A9; /* Background color on active */
+  color: white; /* Text color on active */
+} {
+    color: #6FA5A9; /* Text color */
+    border: 2px solid #6FA5A9; /* Border color */
+    background-color: transparent; /* Transparent background */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+    /* Hover effect */
+    .btn-custom:hover {
+        background-color: #6FA5A9; /* Background color on hover */
+        color: white; /* Text color on hover */
+    }
+
+    /* Active button style */
+    .btn-custom:active {
+        background-color: #6FA5A9; /* Background color on active */
+        color: white; /* Text color on active */
+    }
