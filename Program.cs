@@ -36,6 +36,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
+// Add the authorization policy
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+});
 // Configure localization options
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
@@ -68,6 +73,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 
 // add by vicky
 app.UseAuthentication();

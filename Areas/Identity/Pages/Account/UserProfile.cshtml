@@ -21,11 +21,20 @@
     </div>
     <br/>
 
-    <button type="submit" class="btn btn-primary">Update Profile</button>
+    <button type="submit" class="btn btn-custom">Update Profile</button>
 </form>
 <br/>
 <div>
     <div>
-        <a asp-page="/Account/ChangePassword">Change Password</a>
+        <a asp-page="/Account/ChangePassword" class="link-custom">Change Password</a>
     </div>
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+    <div>
+            <a asp-page="/Admin/UserList" class="link-custom">Check User List</a>
+    </div>
+        <br />
+    }
 </div>
+
