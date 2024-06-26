@@ -31,7 +31,7 @@ namespace GammaWear.Controllers
         }
 
         // GET: Sock
-     
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Socks.ToListAsync());
@@ -157,14 +157,14 @@ namespace GammaWear.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int id,
-            [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SockSize,ConsumerGroup,SeasonId,BrandId,Price,Rating,Quantity,Description,ImageFile")] Sock sock,
+            [Bind("Id,MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SockSize,SeasonId,BrandId,Price,Rating,Quantity,Description")] Sock sock,
             IFormFile imageFile = null)
+
         {
-            _logger.LogInformation("--- Edit with Bind: enter");
-            _logger.LogInformation($"--Expect ID:{id}, Actual ID: {sock.Id}");
             if (id != sock.Id)
             {
-
+                _logger.LogInformation("--- Edit with Bind: enter");
+                _logger.LogInformation($"--Expect ID:{id}, Actual ID: {sock.Id}");
                 return NotFound();
             }
 
@@ -185,48 +185,36 @@ namespace GammaWear.Controllers
                 return View(sock);
             }
 
-            if (ModelState.IsValid)
+
+            try
             {
-                try
+                var originalSock = await _context.Socks.AsNoTracking().FirstOrDefaultAsync(s => s.Id == sock.Id);
+                if (imageFile != null && imageFile.Length > 0)
                 {
-                    _logger.LogInformation($"--imageFile is: {imageFile}");
-                    if (imageFile != null && imageFile.Length > 0)
-                    {
-                        var fileName = Path.GetFileName(imageFile.FileName);
-                        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", fileName);
-
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await imageFile.CopyToAsync(fileStream);
-                        }
-                        sock.ImageFile = fileName;
-                    }
-                    else
-                    {
-                        // Keep the original image if no new image is provided
-                        var originalSock = await _context.Socks.AsNoTracking().FirstOrDefaultAsync(s => s.Id == sock.Id);
-                        sock.ImageFile = originalSock?.ImageFile ?? sock.ImageFile;
-                    }
-                    _context.Update(sock);
-                    await _context.SaveChangesAsync();
+                    sock.ImageFile = await UpdateImage(imageFile, originalSock.ImageFile);
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!SockExists(sock.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    sock.ImageFile = originalSock.ImageFile;
                 }
-                return RedirectToAction(nameof(Details), new { id = sock.Id });
-
-                //return RedirectToAction(nameof(Index));
+                _context.Update(sock);
+                await _context.SaveChangesAsync();
+               
             }
-            PopulateDropDowns(sock);
-            return View(sock);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SockExists(sock.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Details), new { id = sock.Id });
+
+           
         }
 
         // GET: Sock/Delete/5
@@ -307,6 +295,21 @@ namespace GammaWear.Controllers
             ViewBag.Brands = new SelectList(_context.Brands, "Id", "Name", sock?.BrandId);
         }
 
+        private async Task<string> UpdateImage(IFormFile imageFile, string existingFileName)
+        {
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var fileName = Path.GetFileName(imageFile.FileName);
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(fileStream);
+                }
+                return fileName;
+            }
+            return existingFileName;
+        }
 
 
 

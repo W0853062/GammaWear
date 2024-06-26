@@ -1,128 +1,90 @@
 ﻿@model GammaWear.Models.Sock
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Sock";
 }
 
-<h1>Edit</h1>
+<h1>Edit Sock</h1>
 
-<h4>Sock</h4>
-<hr />
 <div class="row">
-
+    <div class="col-md-6">
+        <img id="imagePreview" src="~/images/@Model.ImageFile" class="img-fluid" alt="Sock Image" />
+    </div>
     <div class="col-md-6">
         <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="MaterialId" class="control-label">Material</label>
-                <select asp-for="MaterialId" class="form-control" asp-items="ViewBag.Materials">
-                    <option value="">Please select a material</option>
-                </select>
-
-                <span asp-validation-for="MaterialId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SockStyleId" class="control-label">SockStyle</label>
-                <select asp-for="SockStyleId" class="form-control" asp-items="ViewBag.SockStyles">
-                    <option value="">Please select a sock style</option>
-                </select>
-                <span asp-validation-for="SockStyleId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OutdoorSportId" class="control-label">Outdoor Sport</label>
-                <select asp-for="OutdoorSportId" class="form-control" asp-items="ViewBag.OutdoorSports">
-                    <option value="">Please select an outdoor sport</option>
-                </select>
-                <span asp-validation-for="OutdoorSportId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SockSize" class="control-label">Sock Size</label>
-                <select asp-for="SockSize" class="form-control" asp-items="Html.GetEnumSelectList<GammaWear.Models.SockSize>()"></select>
-                <span asp-validation-for="SockSize" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConsumerGroup" class="control-label">Consumer Group</label>
-                <select asp-for="ConsumerGroup" class="form-control" asp-items="Html.GetEnumSelectList<GammaWear.Models.ConsumerGroup>()"></select>
-                <span asp-validation-for="ConsumerGroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SeasonId" class="control-label">Season</label>
-                <select asp-for="SeasonId" class="form-control" asp-items="ViewBag.Seasons">
-                    <option value="">Please select a season</option>
-                </select>
-                <span asp-validation-for="SeasonId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label">Brand</label>
-                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands">
-                    <option value="">Please select a brand</option>
-                </select>
-                <span asp-validation-for="BrandId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label">Price</label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rating" class="control-label">Rating</label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantity" class="control-label">In Stock</label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
-            </div>
-
-
             <div class="form-group">
                 <label asp-for="ImageFile" class="control-label">Current Image</label>
-
-                <div>
-                    <img id="image-preview" src="~/images/@Model.ImageFile" alt="Current Image" class="img-thumbnail" style="max-height: 200px;" />
-                </div>
-                <input type="file" asp-for="ImageFile" class="form-control-file" onchange="previewImage(event)"/>
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-
+                <input class="form-control" value="@Model.ImageFile" readonly />
+                <label for="newImageFile">Upload New Image</label>
+                <input type="file" name="imageFile" id="newImageFile" class="form-control" onchange="previewImage(event)" />
             </div>
-
+            <br/>
             <div class="form-group">
-                <label asp-for="Description" class="control-label">Description</label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="MaterialId" class="control-label"></label>
+                <select asp-for="MaterialId" class="form-control" asp-items="ViewBag.Materials"></select>
             </div>
-            <br />
+            <div class="form-group">
+                <label asp-for="SockStyleId" class="control-label"></label>
+                <select asp-for="SockStyleId" class="form-control" asp-items="ViewBag.SockStyles"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutdoorSportId" class="control-label"></label>
+                <select asp-for="OutdoorSportId" class="form-control" asp-items="ViewBag.OutdoorSports"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConsumerGroup" class="control-label"></label>
+                <select asp-for="ConsumerGroup" class="form-control" asp-items="Html.GetEnumSelectList<GammaWear.Models.ConsumerGroup>()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SockSize" class="control-label"></label>
+                <select asp-for="SockSize" class="form-control" asp-items="Html.GetEnumSelectList<GammaWear.Models.SockSize>()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeasonId" class="control-label"></label>
+                <select asp-for="SeasonId" class="form-control" asp-items="ViewBag.Seasons"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label"></label>
+                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-custom" />
             </div>
         </form>
-        <br />
-        <div>
-            <a asp-controller="Sock" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-custom">Detail</a>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-custom">Home</a>
-            <br />
-
-        </div>
     </div>
 </div>
 
-
+<div>
+    <a asp-controller="Sock" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-custom">Detail</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-custom">Home</a>
+    <br />
+</div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    <script>
+    <script type="text/javascript">
         function previewImage(event) {
             var reader = new FileReader();
             reader.onload = function () {
-                var output = document.getElementById('image-preview');
+                var output = document.getElementById('imagePreview');
                 output.src = reader.result;
-            };
+            }
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
 }
-
