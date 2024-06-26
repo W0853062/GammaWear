@@ -14,6 +14,7 @@ using System.IO;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace GammaWear.Controllers
 {
@@ -92,7 +93,7 @@ namespace GammaWear.Controllers
         public async Task<IActionResult> Create([Bind("MaterialId,SockStyleId,OutdoorSportId,ConsumerGroup,SeasonId,BrandId,Price,Rating,Quantity,ImageFile,Description")] Sock sock, IFormFile imageFile)
         {
             _logger.LogInformation("--async Task<IActionResult> Create: enter");
-            PopulateDropDowns();
+            PopulateDropDowns(sock);
 
             if (!ModelState.IsValid)
             {
@@ -103,9 +104,12 @@ namespace GammaWear.Controllers
                         _logger.LogWarning($"Validation Error in Create: {error.ErrorMessage}");
                     }
                 }
-                PopulateDropDowns(sock);
+               
                 return View(sock);
             }
+
+            // Sanitize Description
+            sock.Description = SanitizeInput(sock.Description);
 
             if (ModelState.IsValid)
             {
@@ -118,7 +122,7 @@ namespace GammaWear.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            PopulateDropDowns();
+            //PopulateDropDowns();
             return View(sock);
         }
         // GET: Sock/Edit/5
@@ -178,6 +182,8 @@ namespace GammaWear.Controllers
                 return View(sock);
             }
 
+            // Sanitize Description
+            sock.Description = SanitizeInput(sock.Description);
 
             try
             {
@@ -286,6 +292,16 @@ namespace GammaWear.Controllers
             ViewBag.OutdoorSports = new SelectList(_context.OutdoorSports, "Id", "Name", sock?.OutdoorSportId);
             ViewBag.Seasons = new SelectList(_context.Seasons, "Id", "Name", sock?.SeasonId);
             ViewBag.Brands = new SelectList(_context.Brands, "Id", "Name", sock?.BrandId);
+        }
+        private string SanitizeInput(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return input;
+            }
+
+            // Example: simple sanitization to strip out script tags.
+            return Regex.Replace(input, "<.*?>", string.Empty);
         }
 
         private async Task<string> UpdateImage(IFormFile imageFile, string existingFileName)
