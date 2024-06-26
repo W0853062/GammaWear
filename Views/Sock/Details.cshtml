@@ -11,22 +11,23 @@
             <img class="img-fluid" src="~/images/@Model.ImageFile" alt="@Model.Description">
         </div>
         <div class="col-md-6">
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="card-text"><strong>Rating:</strong> </p>
-                <small class="text-muted">
+            <p class="d-flex align-items-center">
+                <strong>Rating:</strong>
+                <span class="ml-2">
                     @for (int i = 1; i <= 5; i++)
                     {
                         if (i <= @Model.Rating)
                         {
-                            <span class="star star-filled">&#9733;</span>
+                            <span class="fa fa-star star-filled"></span>
                         }
                         else
                         {
-                            <span st class="star">&#9734;</span>
+                            <span class="fa fa-star-o"></span>
                         }
                     }
-                </small>
-            </div>
+                </span>
+            </p>
+
 
 
             <p><strong>Material:</strong>  @Model.MaterialName</p>
