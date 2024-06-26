@@ -19,13 +19,14 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="navbar-brand mx-auto d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/gamma/gamma.png" alt="Gamma Wear Logo" style="height: 60px; display: flex; justify-content: center; align-items: center; margin-right:30px;" />
+                </a>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+                    
                     <ul class="navbar-nav mr-auto left-ul">
                         <li class="nav-item mr-3">
-                            <a class="nav-link text-dark link-custom" asp-area="" asp-controller="Home" asp-action="Index">Products</a>
+                            <a class="nav-link text-dark link-custom" asp-area="" asp-controller="Sock" asp-action="Index">Products</a>
 
                         </li>
                         <li class="nav-item mr-3">
@@ -33,9 +34,7 @@
                         </li>
 
                     </ul>
-                    <a class="navbar-brand mx-auto d-flex align-items-center center-img" asp-area="" asp-controller="Home" asp-action="Index">
-                        <img src="~/images/gamma/gamma_words.png" alt="Gamma Wear Logo" style="max-height: 40px;" />
-                    </a>
+
 
                     <ul class="navbar-nav right-ul ml-auto ">
 

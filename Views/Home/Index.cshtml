@@ -3,73 +3,13 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @using GammaWear.Helpers
 
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="row">
-    @foreach (var sock in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <a href="@Url.Action("Details", "Sock", new { id = sock.Id })">
-                    <img class="card-img-top" src="~/images/@sock.ImageFile" alt="@sock.Description">
-                </a>
+    @await Html.PartialAsync("_SockList", Model)
 
-                <div class="card-body">
-                    <p class="card-text">@TruncateDescription(sock.Description, 30)</p>
-                    <div class="d-flex justify-content-between align-items-center price-rating">
-                    
-                        <small class="text-muted">
-                            <p class="card-text">@sock.Price.ToString("C")</p>
-                        </small>
-
-                        <small class="text-muted">
-                            @for (int i = 1; i <= 5; i++)
-                            {
-                                if (i <= @sock.Rating)
-                                {
-                                    <span class="star star-filled">&#9733;</span>
-                                }
-                                else
-                                {
-                                    <span class="star">&#9734;</span>
-                                }
-                            }
-                        </small>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="@Url.Action("Details", "Sock", new { id = sock.Id })" class="btn btn-custom mr-2">Detail</a>
-
-                        </div>
-
-
-                        <small class="text-muted">In Stock: @sock.Quantity</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
 </div>
 
-
-
-@functions {
-    public static string TruncateDescription(string description, int wordCount)
-    {
-        if (string.IsNullOrEmpty(description))
-        {
-            return description;
-        }
-
-        var words = description.Split(' ');
-        if (words.Length <= wordCount)
-        {
-            return description;
-        }
-
-        return string.Join(" ", words.Take(wordCount)) + "...";
-    }
-}

@@ -31,7 +31,7 @@ namespace GammaWear.Controllers
         }
 
         // GET: Sock
-        [Authorize(Roles = "Editor")]
+     
         public async Task<IActionResult> Index()
         {
             return View(await _context.Socks.ToListAsync());

@@ -112,7 +112,7 @@ ul {
 
 .service-textbox .service-title {
     font-weight: bold;
-    text-align:left;
+    text-align: left;
     margin-bottom: 5px;
 }
 
@@ -150,14 +150,18 @@ footer .container {
 }
 
 /* custom a*/
-link-custom {
+link-custom,
+a.link-custom {
     color: #6FA5A9 !important;
-    text-decoration: none; /* Remove underline if needed */
+    text-decoration: none;
+    border-bottom: solid 3px transparent;
 }
 
-link-custom:hover {
-    color: #6FA5A9;
-}
+    .link-custom:hover,
+    a.link-custom:hover {
+        color: #6FA5A9 !important;
+        border-bottom: solid 3px #6FA5A9;
+    }
 /* custom button */
 /* Default button style */
 .btn-custom {
@@ -237,5 +241,12 @@ link-custom:hover {
 .nav-link {
     font-size: 36px;
     color: #6FA5A9 !important;
-    
 }
+
+    .nav-link,
+    .nav-link:hover,
+    a.nav-link,
+    a.nav-link:hover {
+        font-size: 36px;
+        color: #6FA5A9 !important;
+    }
