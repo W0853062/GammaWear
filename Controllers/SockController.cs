@@ -111,14 +111,7 @@ namespace GammaWear.Controllers
             {
                 if (imageFile != null && imageFile.Length > 0)
                 {
-                    var fileName = Path.GetFileName(imageFile.FileName);
-                    var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", fileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(fileStream);
-                    }
-                    sock.ImageFile = fileName;
+                    sock.ImageFile = await UpdateImage(imageFile, null);
                 }
 
                 _context.Add(sock);
@@ -299,14 +292,17 @@ namespace GammaWear.Controllers
         {
             if (imageFile != null && imageFile.Length > 0)
             {
-                var fileName = Path.GetFileName(imageFile.FileName);
-                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", fileName);
+                var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", uniqueFileName);
+
+                //var fileName = Path.GetFileName(imageFile.FileName);
+                //var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "images", fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await imageFile.CopyToAsync(fileStream);
                 }
-                return fileName;
+                return uniqueFileName;
             }
             return existingFileName;
         }
