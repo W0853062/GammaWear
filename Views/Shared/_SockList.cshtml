@@ -19,13 +19,17 @@
                     <small class="text-muted">
                         @for (int i = 1; i <= 5; i++)
                         {
-                            if (i <= @sock.Rating)
+                            if (i <= Math.Floor((double)@sock.Rating))
                             {
-                                <span class="star star-filled">&#9733;</span>
+                                <span class="fa fa-star star-filled"></span>
+                            }
+                            else if (i == Math.Ceiling((double)@sock.Rating) && @sock.Rating % 1 != 0)
+                            {
+                                <span class="fa fa-star-half-alt star-half"></span>
                             }
                             else
                             {
-                                <span class="star">&#9734;</span>
+                                <span class="fa fa-star-o star-empty"></span>
                             }
                         }
                     </small>

@@ -176,7 +176,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Wool").Id,
-                Rating = 4,
+                Rating = 4.5f,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Knee High Socks").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Ski / Snowboard").Id,
@@ -194,7 +194,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Bamboo").Id,
-                Rating = 3,
+                Rating = 4,
                 SockSize = SockSize.Small,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Running / Cycling").Id,
@@ -210,7 +210,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Cotton").Id,
-                Rating = 2,
+                Rating = 3.5f,
                 SockSize = SockSize.OneSizeFitsAll,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Casual").Id,
                 OutdoorSportId = context.OutdoorSports.First(o => o.Name == "Athletic Sports").Id,
@@ -227,7 +227,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Coolmax").Id,
-                Rating = 1,
+                Rating = 3,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Ankle Socks").Id,
 
@@ -262,7 +262,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Eco Friendly Fibres").Id,
-                Rating = 5,
+                Rating = 4.5f,
                 SockSize = SockSize.Large,
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
 
@@ -280,7 +280,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Merino Wool").Id,
-                Rating = 5,
+                Rating = 4.5f,
                 SockSize = SockSize.Large,
 
                 SockStyleId = context.SockStyles.First(s => s.Name == "Crew Socks").Id,
@@ -299,7 +299,7 @@ public static class SeedData
             new Sock
             {
                 MaterialId = context.Materials.First(m => m.Name == "Cotton").Id,
-                Rating = 5,
+                Rating = 4.5f,
                 SockSize = SockSize.Small,
 
                 SockStyleId = context.SockStyles.First(s => s.Name == "Ankle Socks").Id,

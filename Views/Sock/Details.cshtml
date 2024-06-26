@@ -16,13 +16,17 @@
                 <span class="ml-2">
                     @for (int i = 1; i <= 5; i++)
                     {
-                        if (i <= @Model.Rating)
+                        if (i <= Math.Floor((double)@Model.Rating))
                         {
                             <span class="fa fa-star star-filled"></span>
                         }
+                        else if (i == Math.Ceiling((double)@Model.Rating) && @Model.Rating % 1 != 0)
+                        {
+                            <span class="fa fa-star-half-alt star-half"></span>
+                        }
                         else
                         {
-                            <span class="fa fa-star-o"></span>
+                            <span class="fa fa-star-o star-empty"></span>
                         }
                     }
                 </span>

@@ -7,7 +7,7 @@ namespace GammaWear.ViewModels
     public class SockDetailsViewModel
     {
         public int Id { get; set; }
-        public int Rating { get; set; }
+        public float Rating { get; set; }
         public string MaterialName { get; set; }
         public string SockStyleName { get; set; }
         public string OutdoorSportName { get; set; }

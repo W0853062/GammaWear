@@ -41,8 +41,8 @@ namespace GammaWear.Models
     public class Sock
     {
         public int Id { get; set; }
-        [Range(1, 5)]
-        public int Rating { get; set; }
+        [Range(0.0, 5.0)]
+        public float Rating { get; set; }
 
         [Required]
         public int MaterialId { get; set; }
