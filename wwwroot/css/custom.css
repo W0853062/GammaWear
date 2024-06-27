@@ -253,3 +253,7 @@ a.link-custom {
         font-size: 36px;
         color: #6FA5A9 !important;
     }
+
+.form-label-custom {
+    color: #6FA5A9 !important;
+}
