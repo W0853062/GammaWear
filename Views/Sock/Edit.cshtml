@@ -20,27 +20,27 @@
             </div>
             <br/>
             <div class="form-group">
-                <label asp-for="MaterialId" class="control-label"></label>
+                <label asp-for="MaterialId" class="control-label">Material:</label>
                 <select asp-for="MaterialId" class="form-control" asp-items="ViewBag.Materials"></select>
             </div>
             <div class="form-group">
-                <label asp-for="SockStyleId" class="control-label"></label>
+                <label asp-for="SockStyleId" class="control-label">Style:</label>
                 <select asp-for="SockStyleId" class="form-control" asp-items="ViewBag.SockStyles"></select>
             </div>
             <div class="form-group">
-                <label asp-for="OutdoorSportId" class="control-label"></label>
+                <label asp-for="OutdoorSportId" class="control-label">Outdoor Sport:</label>
                 <select asp-for="OutdoorSportId" class="form-control" asp-items="ViewBag.OutdoorSports"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ConsumerGroup" class="control-label"></label>
+                <label asp-for="ConsumerGroup" class="control-label">Consumer Group:</label>
                 <select asp-for="ConsumerGroup" class="form-control" asp-items="Html.GetEnumSelectList<GammaWear.Models.ConsumerGroup>()"></select>
             </div>
             <div class="form-group">
-                <label asp-for="SockSize" class="control-label"></label>
+                <label asp-for="SockSize" class="control-label">Size:</label>
                 <select asp-for="SockSize" class="form-control" asp-items="Html.GetEnumSelectList<GammaWear.Models.SockSize>()"></select>
             </div>
             <div class="form-group">
-                <label asp-for="SeasonId" class="control-label"></label>
+                <label asp-for="SeasonId" class="control-label">Season:</label>
                 <select asp-for="SeasonId" class="form-control" asp-items="ViewBag.Seasons"></select>
             </div>
             <div class="form-group">
@@ -48,19 +48,19 @@
                 <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
+                <label asp-for="Price" class="control-label">Price:</label>
                 <input asp-for="Price" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
+                <label asp-for="Rating" class="control-label">Rating:</label>
                 <input asp-for="Rating" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
+                <label asp-for="Quantity" class="control-label">In Stock:</label>
                 <input asp-for="Quantity" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Description:</label>
                 <textarea asp-for="Description" class="form-control"></textarea>
             </div>
             <div class="form-group">
